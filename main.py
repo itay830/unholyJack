@@ -7,6 +7,13 @@ class App:
     def __init__(self):
         self.gameState = 'main menu'
 
+    @staticmethod
+    def event_check():
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+
 
 if __name__ == '__main__':
     app = App()
@@ -19,10 +26,7 @@ if __name__ == '__main__':
             screen.fill(BLACK)
 
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
+        app.event_check()
 
 
 
