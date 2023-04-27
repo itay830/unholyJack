@@ -3,6 +3,7 @@ from sys import exit
 
 BLACK, WHITE = (0, 0, 0), (255, 255, 255)
 
+
 class App:
     def __init__(self):
         self.gameState = 'main menu'
