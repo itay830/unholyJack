@@ -1,10 +1,10 @@
 import pygame
 from sys import exit
 from ButtonClass import Button
-BLACK, WHITE = (0, 0, 0), (255, 255, 255)
 # just a comment
 
 
+# Happy Halloween
 class App:
     def __init__(self):
         self.gameState = 'main menu'
@@ -25,6 +25,8 @@ if __name__ == '__main__':
 
 
     # Testing
+    BLACK, WHITE = (0, 0, 0), (255, 255, 255)
+
     b = Button((WIDTH/2, HEIGHT/2))
 
 
