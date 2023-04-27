@@ -2,6 +2,7 @@ import pygame
 from sys import exit
 from ButtonClass import Button
 BLACK, WHITE = (0, 0, 0), (255, 255, 255)
+# just a comment
 
 
 class App:
