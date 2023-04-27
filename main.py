@@ -1,6 +1,6 @@
 import pygame
 from sys import exit
-
+from ButtonClass import Button
 BLACK, WHITE = (0, 0, 0), (255, 255, 255)
 
 
@@ -22,9 +22,15 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption('UnholyJack')
 
+
+    # Testing
+    b = Button((WIDTH/2, HEIGHT/2))
+
+
     while 1:
         if app.gameState == "main menu":
             screen.fill(BLACK)
+            b.update(screen)
 
 
         app.event_check()
