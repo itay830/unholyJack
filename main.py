@@ -3,7 +3,7 @@ from sys import exit
 
 BLACK, WHITE = (0, 0, 0), (255, 255, 255)
 # just a comment
-# another comment
+
 
 class App:
     def __init__(self):
