@@ -1,10 +1,8 @@
 import pygame
 from sys import exit
 from ButtonClass import Button
-# just a comment
 
 
-# Happy Halloween
 class App:
     def __init__(self):
         self.gameState = 'main menu'
