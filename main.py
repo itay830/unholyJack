@@ -1,42 +1,41 @@
-import pygame
+# Packeges :
 from sys import exit
-from ButtonClass import Button
+from appClass import App
+from buttonClass import Button
+import pygame
+
+# Check starter file :
+if __name__ != '__main__':
+    pygame.quit()
+    exit()
+
+pygame.init()
+app = App() # States : ['main menu', 'options', 'map']
+
+WIDTH, HEIGHT = 1200, 1200
+CENTER = (WIDTH/2, HEIGHT/2)
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
-class App:
-    def __init__(self):
-        self.gameState = 'main menu'
+# Buttons :
+start_button = Button(surf=pygame.Surface((100, 100)), pos=CENTER)
 
-    @staticmethod
-    def event_check():
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
+# Main loop :
+while 1:
+    screen.fill((0, 0, 0))
+    app.check_events()
 
+    if app.state == 'main menu':
+        start_button.check_click_state()
+        start_button.draw(screen)
 
-if __name__ == '__main__':
-    app = App()
-    WIDTH, HEIGHT = 1200, 800
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption('UnholyJack')
+        if start_button.click_state:
+            app.state = 'map'
 
-
-    # Testing
-    BLACK, WHITE = (0, 0, 0), (255, 255, 255)
-
-    b = Button((WIDTH/2, HEIGHT/2))
-
-
-    while 1:
-        if app.gameState == "main menu":
-            screen.fill(BLACK)
-            b.update(screen)
-
-
-        app.event_check()
+    if app.state == 'map':
+        ...
 
 
 
-        pygame.display.update()
+    pygame.display.update()
 
