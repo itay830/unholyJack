@@ -18,3 +18,5 @@ class App:
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_ESCAPE:
                     self.exit_game()
+
+

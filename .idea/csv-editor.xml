@@ -3,7 +3,7 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\resources\ground.csv">
+        <entry key="\resources\spritesheets\city\ground.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
