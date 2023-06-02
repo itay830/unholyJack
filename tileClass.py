@@ -16,7 +16,8 @@ class Tile:
 class TileMap:
     def __init__(self, file_path: str, spritesheet: spritesheetClass.Spritesheet, tile_size, pos):
         self.map_w, self.map_h = 0, 0
-
+        self.offset = pygame.math.Vector2()
+        self.start_pos = pos
         self.tile_size = tile_size
         self.start_x, self.start_y = 0, 0
         self.spritesheet = spritesheet
@@ -68,3 +69,8 @@ class TileMap:
 
     def resize_maps(self, w, h):
         self.map_surface = pygame.transform.scale(self.map_surface, (w, h))
+
+
+class DynemicTile(Tile):
+    def __init__(self):
+        ...

@@ -34,18 +34,18 @@ player = Player(CENTER)
 tileMap = TileMap('resources/spritesheets/city/ground.csv', Spritesheet('resources/spritesheets/city/citySpritesheet.png'), 150, (0, 0))
 
 # Camera
-camera = Camera(player)
+camera = Camera(camera_size=(WIDTH, HEIGHT))
 
 
 # Main loop :
 while 1:
-
+    # Regular setup :
     dt = clock.tick(FPS) * .001 * FPS
     keys = pygame.key.get_pressed()
-
     screen.fill((0, 0, 0))
     app.check_events()
 
+    # Main menu :
     if app.state == 'main menu':
         start_button.check_click_state()
         start_button.draw(screen)
@@ -53,35 +53,21 @@ while 1:
         if start_button.clickState:
             app.state = 'map'
 
+
+    # 2d map :
     if app.state == 'map':
+        player.walk_offseted_rect(keys)
 
-        if keys[pygame.K_a]:
-            player.left = True
-        else:
-            player.left = False
+        camera.calc_offset(player.offsetedRect)
 
-        if keys[pygame.K_d]:
-            player.right = True
-        else:
-            player.right = False
+        tileMap.offset = tileMap.rect.topleft - camera.offset + camera.camera_center
+        tileMap.draw_map(screen, tileMap.offset)
 
-        if keys[pygame.K_w]:
-            player.up = True
-        else:
-            player.up = False
-
-        if keys[pygame.K_s]:
-            player.down = True
-        else:
-            player.down = False
-
-        player.move()
-
-        tileMap.rect.center = (0 - camera.offset.x, 0 - camera.offset.y)
-        camera.follow([tileMap.rect.left - WIDTH, tileMap.rect.right - WIDTH, tileMap.rect.top - HEIGHT, tileMap.rect.bottom - HEIGHT])
-
-        tileMap.draw_map(screen, tileMap.rect)
-        player.draw(screen, (player.rect.x - camera.offset.x, player.rect.y - camera.offset.y))
+        player.offset = player.offsetedRect.topleft - camera.offset
+        player.rect.center = (player.offset.x + player.image.get_width()//2, player.offset.y + player.image.get_height()//2)
+        player.draw(screen, player.offset)
+        pygame.draw.rect(screen, (255, 0, 0), player.offsetedRect)
+        pygame.draw.rect(screen, (0, 255, 0), player.rect)
 
 
 
